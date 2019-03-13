@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import musicData from './music-data.json';
-
 
 import View from './play-list.view';
 const { Player, ButtonsBlock, 
@@ -20,33 +18,13 @@ export default class PlayList extends Component {
 
     render() {
         
-        
-        const elements = musicData.map((item) => {
-            return (
-                <Track.Wrapper key={item.id}
-                    onClick = {() => void 0}>
-                    <span>{item.id}</span>  
-                    <Track.Author>{item.author}</Track.Author>
-                    <span> - </span>
-                    <span>{item.track}</span>
-                </Track.Wrapper>  
-            );
-        });
-
-
         return (
             <Player>
                 
                 <ButtonsBlock>
-                    <div>
                         <PlayButtons src="img/prev-song.svg" alt="back"/>
-                    </div>
-                    <div>
                         <PlayButtons src="img/play.svg" alt="play"/>
-                    </div>
-                    <div>
-                        <PlayButtons src="img/next-song.svg" alt="next"/>
-                    </div>  
+                        <PlayButtons src="img/next-song.svg" alt="next"/> 
                 </ButtonsBlock>
                 
                 <TrackNameBlock>
@@ -56,32 +34,26 @@ export default class PlayList extends Component {
                 </TrackNameBlock>
                 
                 <ControlBlock>
-                    <div>
                         <ControlBlockButton src="img/player-list-actived.svg" alt="playlist-on"/>
-                    </div>
-                    <div>
                         <ControlBlockButton src="img/player-mix.svg" alt="mixing"/>
-                    </div>
-                    <div>
                         <ControlBlockButton src="img/track-liked.svg" alt="like"/>
-                    </div>
-                    <div>
                         <ControlBlockButton src="img/volume.svg" alt="volume"/>
-                    </div>
-                    <div>
                         Volume
-                    </div>
-                    <div>
                         100%
-                    </div>
                 </ControlBlock>
                 
                 <TracksListBlock>
-                    <ul>
-                        <li>
-                            { elements }
-                        </li>
-                    </ul>
+                    {this.props.musicData.map((item) => {
+                        return (
+                            <Track.Wrapper key={item.id}
+                                onClick = {() => void 0}>
+                                <span>{item.id}</span>  
+                                <Track.Author>{item.author}</Track.Author>
+                                <span> - </span>
+                                <span>{item.track}</span>
+                            </Track.Wrapper>  
+                        );
+                    })};
                 </TracksListBlock>
 
             </Player>

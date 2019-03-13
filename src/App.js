@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-
+import musicData from './music-data.json';
 
 import PlayList from './play-list.controller';
 import View from './play-list.view';
 
+const { Wrapper, Main, Header, HeaderButton } = View;
 export default class App extends Component {
   
-
   render() {
-
-    const { Wrapper, Main, Header } = View;
 
     return (
       <Wrapper>
         <Main>
           <Header>
-            <button type='button'>Playlist</button>
-            <button type='button'>Radio</button>
+            <HeaderButton type='button'>Playlist</HeaderButton>
+            <HeaderButton type='button'>Radio</HeaderButton>
           </Header>
-          <PlayList />           
+          <PlayList musicData = { musicData } />           
         </Main>
       </Wrapper>
       

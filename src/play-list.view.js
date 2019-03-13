@@ -6,11 +6,7 @@ export default {
    background-image: url(https://s.0332.ua/section/newsInternalIcon/upload/images/news/icon/000/044/666/monatik03_5b9cf91c40a23.jpg);
 	background-size: cover;
   display: flex;
-    display: -ms-flexbox;
-    display: -webkit-flex;
   align-items: flex-end;
-    -webkit-align-items: flex-end;
-    -ms-flex-align: end;
   width: 100vw;
   height: 100vh;
   `,
@@ -21,11 +17,8 @@ export default {
     width: 45%;
     height: 73%; 
     display: flex;
-        display: -webkit-flex;
     flex-flow: column nowrap;
-        -webkit-flex-flow: column nowrap;
     align-items: center;
-        -webkit-align-items: center;
   `,
 
   Header: styled.header`
@@ -33,56 +26,40 @@ export default {
     margin-top: 3%;
     margin-right: 18%;
     display: inline-block;  
-    > button {
-        background-color: transparent;
-        background-repeat:no-repeat;
-        border: none;
-        color: white;
-        cursor:pointer;
-        font-size: 18px;
-        overflow: hidden;
-        outline:none;
-    };
+  `,
+  HeaderButton: styled.button` 
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    color: white;
+    cursor:pointer;
+    font-size: 18px;
+    outline:none;
   `,
 
   Player: styled.div`
-  box-sizing: border-box;
+    box-sizing: border-box;
     display: flex;
-        display: -webkit-flex;
     flex-flow: column nowrap;
     width: 100%
 `,
 
   ButtonsBlock: styled.div`
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
     justify-content: flex-end;
-    -webkit-align-content: flex-start;
-    -ms-flex-line-pack: start;
     align-content: flex-start;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
     margin-right: 7%;
     margin-top: 3%;
-    > div {
-        display: inline-block;
-        margin: 1vh; 
-    }
   `,
   PlayButtons: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
+    display: inline-block;
+    margin: 1vh; 
   `,
 
   TrackNameBlock: styled.div`
@@ -92,27 +69,24 @@ export default {
 
   ControlBlock: styled.div`
     display: flex;
-    display: -webkit-flex;
     flex-wrap: nowrap;
     /* justify-content: flex-end; */
     align-items: center;
     margin-top: 8%;
     margin-left: 29%;
-    & > div {
-        margin-left: 0.7vw;
-    };
   `,
   ControlBlockButton: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
+    margin-left: 0.7vw;
   `,
   
-  TracksListBlock: styled.div`
+  TracksListBlock: styled.ul`
     margin-top: 6%;
   `,
   Track: {
-    Wrapper: styled.div`
+    Wrapper: styled.li`
     padding-top: 10px;
     padding-bottom: 10px;
     margin-left: 11%;
