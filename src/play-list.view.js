@@ -1,6 +1,8 @@
 //import React, { Component } from 'react';
 import styled from 'styled-components';
 
+// Убрать все процентные значения – заменить фиксированые или авто
+
 export default {
   Wrapper: styled.div`
    background-image: url(https://s.0332.ua/section/newsInternalIcon/upload/images/news/icon/000/044/666/monatik03_5b9cf91c40a23.jpg);
@@ -54,35 +56,21 @@ export default {
 `,
 
   ButtonsBlock: styled.div`
-    display: -ms-flexbox;
-    display: -webkit-flex;
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
     flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
     justify-content: flex-end;
-    -webkit-align-content: flex-start;
-    -ms-flex-line-pack: start;
     align-content: flex-start;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
     align-items: center;
     margin-right: 7%;
-    margin-top: 3%;
-    > div {
-        display: inline-block;
-        margin: 1vh; 
-    }
+    margin-top: 3%; // От ширины?
   `,
   PlayButtons: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
+    display: inline-block;
+    margin: 1vh; 
   `,
 
   TrackNameBlock: styled.div`
@@ -98,21 +86,19 @@ export default {
     align-items: center;
     margin-top: 8%;
     margin-left: 29%;
-    & > div {
-        margin-left: 0.7vw;
-    };
   `,
   ControlBlockButton: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
+    margin-left: 0.7vw;
   `,
   
-  TracksListBlock: styled.div`
+  TracksListBlock: styled.ul`
     margin-top: 6%;
   `,
   Track: {
-    Wrapper: styled.div`
+    Wrapper: styled.li`
     padding-top: 10px;
     padding-bottom: 10px;
     margin-left: 11%;
@@ -121,7 +107,8 @@ export default {
         background-color: rgba(255, 255, 255, 0.2);
     }`,
     Author: styled.span`
-      padding-left: 10px;    
+      padding-left: 10px;
+      font-weight: 600;    
     `,
   },
 

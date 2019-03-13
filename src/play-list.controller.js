@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
-import musicData from './music-data.json';
-
-
+import React, {Component} from 'react';
 import View from './play-list.view';
-const { Player, ButtonsBlock, 
-    PlayButtons, TrackNameBlock, 
-    ControlBlock, ControlBlockButton, 
-    TracksListBlock, Track } = View;
+
+const {
+    Player, ButtonsBlock,
+    PlayButtons, TrackNameBlock,
+    ControlBlock, ControlBlockButton,
+    TracksListBlock, Track
+} = View;
 
 export default class PlayList extends Component {
-     
+
     state = {
         indx: 0,
         visible: true,
@@ -19,69 +19,47 @@ export default class PlayList extends Component {
     }
 
     render() {
-        
-        
-        const elements = musicData.map((item) => {
-            return (
-                <Track.Wrapper key={item.id}
-                    onClick = {() => void 0}>
-                    <span>{item.id}</span>  
-                    <Track.Author>{item.author}</Track.Author>
-                    <span> - </span>
-                    <span>{item.track}</span>
-                </Track.Wrapper>  
-            );
-        });
-
-
         return (
             <Player>
-                
+
                 <ButtonsBlock>
-                    <div>
-                        <PlayButtons src="img/prev-song.svg" alt="back"/>
-                    </div>
-                    <div>
-                        <PlayButtons src="img/play.svg" alt="play"/>
-                    </div>
-                    <div>
-                        <PlayButtons src="img/next-song.svg" alt="next"/>
-                    </div>  
+                    <PlayButtons src="img/prev-song.svg" alt="back"/>
+                    <PlayButtons src="img/play.svg" alt="play"/>
+                    <PlayButtons src="img/next-song.svg" alt="next"/>
                 </ButtonsBlock>
-                
+
                 <TrackNameBlock>
+
+                    {/*Поменять теги span на styled's*/}
+
                     <span>Sunny</span>
                     <span> - </span>
                     <span>Bensound</span>
                 </TrackNameBlock>
-                
+
                 <ControlBlock>
-                    <div>
-                        <ControlBlockButton src="img/player-list-actived.svg" alt="playlist-on"/>
-                    </div>
-                    <div>
-                        <ControlBlockButton src="img/player-mix.svg" alt="mixing"/>
-                    </div>
-                    <div>
-                        <ControlBlockButton src="img/track-liked.svg" alt="like"/>
-                    </div>
-                    <div>
-                        <ControlBlockButton src="img/volume.svg" alt="volume"/>
-                    </div>
-                    <div>
-                        Volume
-                    </div>
-                    <div>
-                        100%
-                    </div>
+                    <ControlBlockButton src="img/player-list-actived.svg" alt="playlist-on"/>
+                    <ControlBlockButton src="img/player-mix.svg" alt="mixing"/>
+                    <ControlBlockButton src="img/track-liked.svg" alt="like"/>
+                    <ControlBlockButton src="img/volume.svg" alt="volume"/>
+                    Volume
+                    100%
                 </ControlBlock>
-                
+
                 <TracksListBlock>
-                    <ul>
-                        <li>
-                            { elements }
-                        </li>
-                    </ul>
+                    {this.props.musicData.map((item) => {
+                        return (
+                            <Track.Wrapper key={item.id} onClick={() => void 0}>
+
+                                {/*Поменять теги span на styled's*/}
+
+                                <span>{item.id}</span>
+                                <Track.Author>{item.author}</Track.Author>
+                                <span> - </span>
+                                <span>{item.track}</span>
+                            </Track.Wrapper>
+                        );
+                    })}
                 </TracksListBlock>
 
             </Player>
