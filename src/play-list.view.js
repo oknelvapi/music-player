@@ -14,18 +14,15 @@ export default {
   Main: styled.main`
     background-color: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255);
-    width: 45%;
-    height: 73%; 
+    width: 613px; 
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
   `,
 
   Header: styled.header`
-  box-sizing: border-box;
-    margin-top: 3%;
-    margin-right: 18%;
-    display: inline-block;  
+  margin-top: 25px;
+  margin-bottom: 14px;
   `,
   HeaderButton: styled.button` 
     background-color: transparent;
@@ -41,39 +38,49 @@ export default {
     box-sizing: border-box;
     display: flex;
     flex-flow: column nowrap;
-    width: 100%
+    align-content: flex-start;
+    padding-left: 70px;
+    width: 100%;
 `,
 
   ButtonsBlock: styled.div`
+    box-sizing: border-box;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
     align-content: flex-start;
     align-items: center;
-    margin-right: 7%;
-    margin-top: 3%;
+    padding-right: 60px;
   `,
   PlayButtons: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
     display: inline-block;
-    margin: 1vh; 
+    padding: 0 4px;
   `,
 
-  TrackNameBlock: styled.div`
-    font-size: 4vh;
-    margin-left: 30%;
+  TrackTitleBlock: styled.div`
+    width: 70%;
+    margin-left: auto;
+    margin-bottom: 18px;
+    padding-right: 35px;
+  `,
+  TrackTitle: styled.span`
+    font-weight: ${ props => props.bold ?
+    "bold" : "normal"};
+    font-size: 24px;
   `,
 
   ControlBlock: styled.div`
     display: flex;
     flex-wrap: nowrap;
-    /* justify-content: flex-end; */
     align-items: center;
-    margin-top: 8%;
-    margin-left: 29%;
+    width: 70%;
+    margin-left: auto;
+    margin-bottom: 15px;
+    padding-right: 35px;
   `,
   ControlBlockButton: styled.img`
     cursor: pointer;
@@ -83,20 +90,27 @@ export default {
   `,
   
   TracksListBlock: styled.ul`
-    margin-top: 6%;
+    box-sizing: border-box;
+    max-height: calc(100vh - 55px);
+    padding-top: 20px;
+    padding-bottom: 25px;
   `,
   Track: {
     Wrapper: styled.li`
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 11%;
-    cursor: pointer;
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }`,
-    Author: styled.span`
-      padding-left: 10px;    
-    `,
+      background-color: ${props => props.chosen ?
+      "rgba(255, 255, 255, 0.2)" : "inherit"};
+      line-height: 35px;
+      flex-direction: row;
+      padding-right: 18px;
+      cursor: pointer;
+      &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+      }`,
+      Field: styled.span`
+        font-weight: ${ props => props.bold ?
+        "bold" : "normal"};
+        padding-left: 10px;
+      `,
   },
 
 };
