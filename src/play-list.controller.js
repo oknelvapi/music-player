@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
 
 import View from './play-list.view';
 const { Player, ButtonsBlock, 
     PlayButtons, TrackTitleBlock, 
-    ControlBlock, ControlBlockButton, 
+    ControlBlock, ControlBlockButton,
+    VolumeBlock, 
     TracksListBlock, TrackTitle, Track } = View;
 
 export default class PlayList extends Component {
@@ -15,11 +17,11 @@ export default class PlayList extends Component {
         visible: true,
         mixed: false,
         muted: false,
-        value: 2
+        value: 50,
     };
     
     onChosen = (idx) => {
-        console.log(`Done: ${this.props.musicData[idx].id}`)
+        console.log(`I've chosen the track №: ${this.props.musicData[idx].id}`)
         
     }
     onTrackClick = (idx) => {
@@ -41,19 +43,34 @@ export default class PlayList extends Component {
             };
         });
     };
-    // onPlayPrev = () => {
-    //     const numbOfTracks = this.props.musicData.length
-    //     this.setState( ({ index }) => {
-    //         if ((index-1) < 0 ) {
-    //             index = numbOfTracks
-    //         } else {
-    //             index
-    //         } 
-    //         return {
-    //             index: index-1
-    //         };
-    //     });
-    // }
+    onPlayPrev = () => {
+        const numbOfTracks = this.props.musicData.length; 
+        this.setState( ({ index }) => {
+            if (( index - 1) < 0 ) {
+                debugger
+                return {
+                    index: numbOfTracks
+                };
+            };
+            return {
+                index: index - 1
+            };
+        });
+    }
+
+    onPlayNext = () => {
+        const numbOfTracks = this.props.musicData.length; 
+        this.setState( ({ index }) => {
+            if ((index + 1) >= numbOfTracks ) {
+                return {
+                    index: 0
+                };
+            };
+            return {
+                index: index + 1
+            };
+        });
+    }
 
     onVisible = () => {
         this.setState( () => {
@@ -93,7 +110,9 @@ export default class PlayList extends Component {
                         <PlayButtons 
                             onClick = { this.onPlay }
                             src={ play ? "img/play.svg" : "img/pause.svg"} alt="play"/>
-                        <PlayButtons src="img/next-song.svg" alt="next"/> 
+                        <PlayButtons 
+                            onClick = { this.onPlayNext }
+                            src="img/next-song.svg" alt="next"/> 
                 </ButtonsBlock>
                 
                 <TrackTitleBlock>
@@ -114,12 +133,14 @@ export default class PlayList extends Component {
                             src={ musicData[index].liked ? "img/track-liked.svg" : "img/track-not-liked.svg"} alt="like"/>
                         <ControlBlockButton 
                             onClick = { this.onMute}
-                            src={ muted ? "img/notvolume.svg" : "img/volume.svg" } alt="volume" />
-                        {/* <InputRange
-                            maxValue={100}
-                            minValue={0}
-                            value={this.state.value}
-                            onChange={value => this.setState({ value })} /> */}
+                            src={ muted ? "img/mute.svg" : "img/volume.svg" } alt="volume" />
+                        <VolumeBlock>
+                            <InputRange
+                                maxValue={100}
+                                minValue={0}
+                                value={this.state.value}
+                                onChange={value => this.setState({ value })} />
+                        </VolumeBlock>
                         <audio
                             src={musicData[index].src}
                             type="audio/mp3" 
@@ -130,8 +151,7 @@ export default class PlayList extends Component {
                                 this.audio = audio
                             }}>
                         </audio>
-                        {/* Volume
-                        100% */}
+                        <span>100%</span>
                 </ControlBlock>
                 
                 <TracksListBlock>

@@ -71,14 +71,17 @@ export default {
   ControlBlock: styled.div`
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
-    margin: 15px auto;
+    margin: 20px auto;
   `,
   ControlBlockButton: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
-    margin-left: 0.7vw;
+    margin: 0 5px 0 10px;
+  `,
+  VolumeBlock: styled.div`
+    width: 220px;
+    margin: auto 20px;
   `,
   
   TracksListBlock: styled.ul`
