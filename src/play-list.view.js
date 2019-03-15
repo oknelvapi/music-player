@@ -6,11 +6,7 @@ export default {
    background-image: url(https://s.0332.ua/section/newsInternalIcon/upload/images/news/icon/000/044/666/monatik03_5b9cf91c40a23.jpg);
 	background-size: cover;
   display: flex;
-    display: -ms-flexbox;
-    display: -webkit-flex;
   align-items: flex-end;
-    -webkit-align-items: flex-end;
-    -ms-flex-align: end;
   width: 100vw;
   height: 100vh;
   `,
@@ -18,111 +14,94 @@ export default {
   Main: styled.main`
     background-color: rgba(0, 0, 0, 0.5);
     color: rgba(255, 255, 255);
-    width: 45%;
-    height: 73%; 
+    width: 613px; 
     display: flex;
-        display: -webkit-flex;
     flex-flow: column nowrap;
-        -webkit-flex-flow: column nowrap;
     align-items: center;
-        -webkit-align-items: center;
+    height: 420px;
   `,
 
   Header: styled.header`
-  box-sizing: border-box;
-    margin-top: 3%;
-    margin-right: 18%;
-    display: inline-block;  
-    > button {
-        background-color: transparent;
-        background-repeat:no-repeat;
-        border: none;
-        color: white;
-        cursor:pointer;
-        font-size: 18px;
-        overflow: hidden;
-        outline:none;
-    };
+  margin-top: 25px;
+  margin-bottom: 20px;
+  `,
+  HeaderButton: styled.button` 
+    background-color: transparent;
+    background-repeat:no-repeat;
+    border: none;
+    color: white;
+    cursor:pointer;
+    font-size: 18px;
+    outline:none;
   `,
 
   Player: styled.div`
-  box-sizing: border-box;
+    box-sizing: border-box;
     display: flex;
-        display: -webkit-flex;
     flex-flow: column nowrap;
-    width: 100%
+    align-content: flex-start;
+    padding-left: 70px;
+    width: 100%;
 `,
 
   ButtonsBlock: styled.div`
-    display: -ms-flexbox;
-    display: -webkit-flex;
+    box-sizing: border-box;
     display: flex;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    -ms-flex-wrap: nowrap;
     flex-wrap: nowrap;
-    -webkit-justify-content: flex-end;
-    -ms-flex-pack: end;
     justify-content: flex-end;
-    -webkit-align-content: flex-start;
-    -ms-flex-line-pack: start;
-    align-content: flex-start;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    margin-right: 7%;
-    margin-top: 3%;
-    > div {
-        display: inline-block;
-        margin: 1vh; 
-    }
+    padding-right: 50px;
   `,
   PlayButtons: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
+    display: inline-block;
+    padding: 0 4px;
   `,
 
-  TrackNameBlock: styled.div`
-    font-size: 4vh;
-    margin-left: 30%;
+  TrackTitleBlock: styled.div`
+    margin: 10px auto 0;
+  `,
+  TrackTitle: styled.span`
+    font-weight: ${ props => props.bold ?
+    "bold" : "normal"};
+    font-size: 24px;
   `,
 
   ControlBlock: styled.div`
     display: flex;
-    display: -webkit-flex;
     flex-wrap: nowrap;
-    /* justify-content: flex-end; */
     align-items: center;
-    margin-top: 8%;
-    margin-left: 29%;
-    & > div {
-        margin-left: 0.7vw;
-    };
+    margin: 15px auto;
   `,
   ControlBlockButton: styled.img`
     cursor: pointer;
     width: 20px;
     height: 20px;
+    margin-left: 0.7vw;
   `,
   
-  TracksListBlock: styled.div`
-    margin-top: 6%;
+  TracksListBlock: styled.ul`
+    box-sizing: border-box;
+    max-height: calc(100vh - 55px);
+    margin-top: 50px;
   `,
   Track: {
-    Wrapper: styled.div`
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin-left: 11%;
-    cursor: pointer;
-    &:hover {
-        background-color: rgba(255, 255, 255, 0.2);
-    }`,
-    Author: styled.span`
-      padding-left: 10px;    
-    `,
+    Wrapper: styled.li`
+      background-color: ${props => props.chosen ?
+      "rgba(255, 255, 255, 0.2)" : "inherit"};
+      line-height: 35px;
+      flex-direction: row;
+      padding-right: 18px;
+      cursor: pointer;
+      &:hover {
+          background-color: rgba(255, 255, 255, 0.2);
+      }`,
+      Field: styled.span`
+        font-weight: ${ props => props.bold ?
+        "bold" : "normal"};
+        padding-left: 10px;
+      `,
   },
 
 };
