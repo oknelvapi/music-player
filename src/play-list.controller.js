@@ -15,7 +15,7 @@ export default class PlayList extends Component {
         visible: true,
         mixed: false,
         muted: false,
-        value: { min: 2, max: 10 },
+        value: 2
     };
     
     onChosen = (idx) => {
@@ -32,17 +32,29 @@ export default class PlayList extends Component {
     
     
     onPlay = () => {
-        if (this.state.play) {
-            this.audio.pause();
-        } else {
+        this.state.play ? 
+            this.audio.pause() :
             this.audio.play();
-        }
         this.setState( () => {
             return {
                 play: !this.state.play
             };
         });
     };
+    // onPlayPrev = () => {
+    //     const numbOfTracks = this.props.musicData.length
+    //     this.setState( ({ index }) => {
+    //         if ((index-1) < 0 ) {
+    //             index = numbOfTracks
+    //         } else {
+    //             index
+    //         } 
+    //         return {
+    //             index: index-1
+    //         };
+    //     });
+    // }
+
     onVisible = () => {
         this.setState( () => {
             return {
@@ -75,7 +87,9 @@ export default class PlayList extends Component {
       return (
             <Player>  
                 <ButtonsBlock>
-                        <PlayButtons src="img/prev-song.svg" alt="back"/>
+                        <PlayButtons 
+                            onClick = { this.onPlayPrev }
+                            src="img/prev-song.svg" alt="back"/>
                         <PlayButtons 
                             onClick = { this.onPlay }
                             src={ play ? "img/play.svg" : "img/pause.svg"} alt="play"/>
@@ -101,11 +115,11 @@ export default class PlayList extends Component {
                         <ControlBlockButton 
                             onClick = { this.onMute}
                             src={ muted ? "img/notvolume.svg" : "img/volume.svg" } alt="volume" />
-                        <InputRange
+                        {/* <InputRange
                             maxValue={100}
                             minValue={0}
                             value={this.state.value}
-                            onChange={value => this.setState({ value })} />
+                            onChange={value => this.setState({ value })} /> */}
                         <audio
                             src={musicData[index].src}
                             type="audio/mp3" 

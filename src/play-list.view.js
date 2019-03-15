@@ -18,11 +18,12 @@ export default {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    height: 420px;
   `,
 
   Header: styled.header`
   margin-top: 25px;
-  margin-bottom: 14px;
+  margin-bottom: 20px;
   `,
   HeaderButton: styled.button` 
     background-color: transparent;
@@ -46,12 +47,9 @@ export default {
   ButtonsBlock: styled.div`
     box-sizing: border-box;
     display: flex;
-    flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-end;
-    align-content: flex-start;
-    align-items: center;
-    padding-right: 60px;
+    padding-right: 50px;
   `,
   PlayButtons: styled.img`
     cursor: pointer;
@@ -62,10 +60,7 @@ export default {
   `,
 
   TrackTitleBlock: styled.div`
-    width: 70%;
-    margin-left: auto;
-    margin-bottom: 18px;
-    padding-right: 35px;
+    margin: 10px auto 0;
   `,
   TrackTitle: styled.span`
     font-weight: ${ props => props.bold ?
@@ -77,10 +72,7 @@ export default {
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
-    width: 70%;
-    margin-left: auto;
-    margin-bottom: 15px;
-    padding-right: 35px;
+    margin: 15px auto;
   `,
   ControlBlockButton: styled.img`
     cursor: pointer;
@@ -92,8 +84,7 @@ export default {
   TracksListBlock: styled.ul`
     box-sizing: border-box;
     max-height: calc(100vh - 55px);
-    padding-top: 20px;
-    padding-bottom: 25px;
+    margin-top: 50px;
   `,
   Track: {
     Wrapper: styled.li`
