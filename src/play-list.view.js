@@ -18,7 +18,6 @@ export default {
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    height: 420px;
   `,
 
   Header: styled.header`
@@ -71,25 +70,34 @@ export default {
   ControlBlock: styled.div`
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
-    margin: 15px auto;
+    margin: 20px auto 70px;
   `,
   ControlBlockButton: styled.img`
     cursor: pointer;
-    width: 20px;
+    width: 18px;
     height: 20px;
-    margin-left: 0.7vw;
+    margin: 0 5px 0 10px;
+  `,
+  VolumeBlock: styled.div`
+    width: 220px;
+    margin: auto 20px;
+  `,
+  VolumeLvl: styled.span`
+    font-size: 14px;
+    width: 25px;
   `,
   
   TracksListBlock: styled.ul`
     box-sizing: border-box;
     max-height: calc(100vh - 55px);
-    margin-top: 50px;
+    display: ${props => props.hide ?
+      "none" : "initial"};
+    /* transition: .5s ease-in-out */ 
   `,
   Track: {
     Wrapper: styled.li`
       background-color: ${props => props.chosen ?
-      "rgba(255, 255, 255, 0.2)" : "inherit"};
+      "rgba(255, 255, 255, 0.2)" : "initial"};
       line-height: 35px;
       flex-direction: row;
       padding-right: 18px;
@@ -100,8 +108,15 @@ export default {
       Field: styled.span`
         font-weight: ${ props => props.bold ?
         "bold" : "normal"};
-        padding-left: 10px;
+        padding-left: 5px;
+        padding-right: 10px;
+      `,
+      Control: styled.div`
+        /* display: inline-block; */
+       float: right;
       `,
   },
-
+  Like: styled.img`
+    margin-right: 40px;
+  `,
 };

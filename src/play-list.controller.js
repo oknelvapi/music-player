@@ -1,60 +1,107 @@
 import React, { Component } from 'react';
 import InputRange from 'react-input-range';
 
+import 'react-input-range/lib/css/index.css';
+import './volume-range.css';
+
 import View from './play-list.view';
 const { Player, ButtonsBlock, 
     PlayButtons, TrackTitleBlock, 
-    ControlBlock, ControlBlockButton, 
-    TracksListBlock, TrackTitle, Track } = View;
+    ControlBlock, ControlBlockButton,
+    VolumeBlock, TracksListBlock, VolumeLvl,
+    TrackTitle, Track, Like } = View;
 
 export default class PlayList extends Component {
      
     state = {
         index: 0,
-        play: true,
+        play: false,
         visible: true,
         mixed: false,
         muted: false,
-        value: 2
+        value: 100,
     };
     
-    onChosen = (idx) => {
-        console.log(`Done: ${this.props.musicData[idx].id}`)
+    // onChosen = (idx) => {
+    //     console.log(`I've chosen the track №: ${this.props.musicData[idx].id}`)
         
-    }
+    // }
     onTrackClick = (idx) => {
-        this.setState(() => {
-            return {
+        this.play();
+        this.setState({
                 index: idx
-            };
-        });
+            });
     };
     
     
     onPlay = () => {
         this.state.play ? 
-            this.audio.pause() :
-            this.audio.play();
-        this.setState( () => {
+        this.pause() :
+        this.play()
+    };
+    play = () => {
+        this.audio.play();
+        this.setState({
+            play: true
+        });
+    };
+    pause = () => {
+        this.audio.pause() ;
+        this.setState({
+            play: false
+        });
+    };
+
+
+    onVolume = ( value ) => {
+        this.audio.volume = value * 0.01
+        this.setState( {
+            value: value
+        });
+    };
+
+
+    onPlayPrev = () => {
+        const numbOfTracks = this.props.musicData.length;
+        this.state.mixed ?
+        this.RandomTrack()
+        :
+        this.setState( ({ index }) => {
+            if (( index - 1) < 0 ) {
+                return {
+                    index: numbOfTracks-1
+                };
+            };
             return {
-                play: !this.state.play
+                index: index - 1
+            };
+        }) ;
+    };
+    onPlayNext = () => {
+        const numbOfTracks = this.props.musicData.length; 
+        this.state.mixed ?
+        this.RandomTrack()
+        :
+        this.setState( ({ index }) => {
+            if ((index + 1) >= numbOfTracks ) {
+                return {
+                    index: 0
+                };
+            };
+            return {
+                index: index + 1
             };
         });
     };
-    // onPlayPrev = () => {
-    //     const numbOfTracks = this.props.musicData.length
-    //     this.setState( ({ index }) => {
-    //         if ((index-1) < 0 ) {
-    //             index = numbOfTracks
-    //         } else {
-    //             index
-    //         } 
-    //         return {
-    //             index: index-1
-    //         };
-    //     });
-    // }
-
+    RandomTrack = () => {
+        const numbOfTracks = this.props.musicData.length; 
+        this.setState(() =>{
+            const nextRandomSong = Math.floor(Math.random() * Math.floor(numbOfTracks));
+            return {
+                index: nextRandomSong
+            };
+        }) 
+    }
     onVisible = () => {
         this.setState( () => {
             return {
@@ -80,6 +127,24 @@ export default class PlayList extends Component {
         });
     };
 
+    NextTrackPlay = () => {
+        const numbOfTracks = this.props.musicData.length;
+        this.state.mixed ?
+        this.RandomTrack()
+        :
+        this.setState( ({ index }) => {
+            if ((index + 1) >= numbOfTracks ) {
+                return {
+                    index: 0
+                };
+            };
+            return {
+                index: index + 1
+            };
+        });
+        
+    }
+
     render() {
       const { musicData } = this.props;
       const { index, play, visible, mixed, muted } = this.state;
@@ -92,8 +157,10 @@ export default class PlayList extends Component {
                             src="img/prev-song.svg" alt="back"/>
                         <PlayButtons 
                             onClick = { this.onPlay }
-                            src={ play ? "img/play.svg" : "img/pause.svg"} alt="play"/>
-                        <PlayButtons src="img/next-song.svg" alt="next"/> 
+                            src={ play ? "img/pause.svg" : "img/play.svg"} alt="play"/>
+                        <PlayButtons 
+                            onClick = { this.onPlayNext }
+                            src="img/next-song.svg" alt="next"/> 
                 </ButtonsBlock>
                 
                 <TrackTitleBlock>
@@ -114,41 +181,52 @@ export default class PlayList extends Component {
                             src={ musicData[index].liked ? "img/track-liked.svg" : "img/track-not-liked.svg"} alt="like"/>
                         <ControlBlockButton 
                             onClick = { this.onMute}
-                            src={ muted ? "img/notvolume.svg" : "img/volume.svg" } alt="volume" />
-                        {/* <InputRange
-                            maxValue={100}
-                            minValue={0}
-                            value={this.state.value}
-                            onChange={value => this.setState({ value })} /> */}
+                            src={ muted ? "img/mute.svg" : "img/volume.svg" } alt="volume" />
+                        <VolumeBlock>
+                            <InputRange
+                                maxValue={100}
+                                minValue={0}
+                                value={this.state.value}
+                                onChange={ this.onVolume } />
+                        </VolumeBlock>
                         <audio
+                            onEnded = { this.NextTrackPlay }
                             src={musicData[index].src}
                             type="audio/mp3" 
                             controls = {false}
-                            autoPlay
+                            autoPlay={play}
                             muted= {muted}
                             ref={(audio) => {
                                 this.audio = audio
+                            
                             }}>
                         </audio>
-                        {/* Volume
-                        100% */}
+                        <VolumeLvl>{this.state.value}%</VolumeLvl>
                 </ControlBlock>
                 
-                <TracksListBlock>
+                <TracksListBlock hide = { !this.state.visible }>
                     {musicData.map((item, idx) => {
                         return (
-                            <Track.Wrapper key={item.id} 
-                                // onClick = { () => his.onTrackClick(indx) } 
-                                // onClick = { this.onTrackClick.bind(this, idx) }
-                                onClick = { () => {
-                                    this.onTrackClick.bind(this, idx)();
-                                    this.onChosen.bind(this, idx)();
-                                } }>
-                                <Track.Field>{item.id}</Track.Field>  
-                                <Track.Field bold>{item.author}</Track.Field>
-                                <Track.Field> - </Track.Field>
-                                <Track.Field>{item.track}</Track.Field>
-                            </Track.Wrapper>  
+                                <Track.Wrapper 
+                                    // Вивчити краще те, що нижче. 
+                                    chosen = { this.state.index === idx }
+                                    key={item.id} 
+                                    // onClick = { () => his.onTrackClick(indx) } 
+                                    onClick = { this.onTrackClick.bind(this, idx) }>
+                                     {/* onClick = { () => {
+                                         this.onTrackClick.bind(this, idx)();
+                                         this.onChosen.bind(this, idx)();
+                                     } }> */}
+                                    <Track.Field>{ this.state.index === idx ? <img src="img/play.svg" alt="play"/> : item.id }</Track.Field>  
+                                    <Track.Field bold>{item.author}</Track.Field>
+                                    <Track.Field> - </Track.Field>
+                                    <Track.Field>{item.track}</Track.Field> 
+                                    <Track.Control>
+                                        <Like src={ item.liked ? "img/track-liked.svg" : "img/track-not-liked.svg"} alt="like"/>
+                                        <Track.Field>{Math.floor(item.duration/60)}-{item.duration % 60}</Track.Field>
+                                        <img src="img/track-actions.svg" alt="action"/>
+                                    </Track.Control>                           
+                                </Track.Wrapper>  
                         );
                     })}
                 </TracksListBlock>

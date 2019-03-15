@@ -1,0 +1,14 @@
+.input-range__label {
+    display: none; 
+}
+.input-range__slider {
+    background: #fff;
+    border-color: white;
+    border-radius: 0;
+    margin-left: 0;
+    width: 0; 
+}
+.input-range__track {
+    height: 0.2rem;
+    background:rgba(255, 255, 255, 0.4);
+}
