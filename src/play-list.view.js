@@ -1,4 +1,3 @@
-//import React, { Component } from 'react';
 import styled from 'styled-components';
 
 export default {
@@ -23,6 +22,7 @@ export default {
   Header: styled.header`
   margin-top: 25px;
   margin-bottom: 20px;
+  
   `,
   HeaderButton: styled.button` 
     background-color: transparent;
@@ -32,6 +32,9 @@ export default {
     cursor:pointer;
     font-size: 18px;
     outline:none;
+  `,
+  RadioContainer: styled.div`
+    height: 164px;
   `,
 
   Player: styled.div`
