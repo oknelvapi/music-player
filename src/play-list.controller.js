@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import InputRange from 'react-input-range';
 
+import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 import './volume-range.css';
 
@@ -16,7 +16,7 @@ export default class PlayList extends Component {
     state = {
         index: 0,
         play: false,
-        visible: true,
+        visible: false,
         mixed: false,
         muted: false,
         value: 100,
