@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export default {
   Wrapper: styled.div`
-   background-image: url(https://s.0332.ua/section/newsInternalIcon/upload/images/news/icon/000/044/666/monatik03_5b9cf91c40a23.jpg);
+   background-image: url(https://i.pinimg.com/originals/81/23/90/8123906a54a506342afff166ae85dd23.jpg);
 	background-size: cover;
   display: flex;
   align-items: flex-end;
