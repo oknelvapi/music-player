@@ -62,7 +62,7 @@ export default class Radio extends Component {
             <RadioContainer>
                 <PlayButtons 
                         onClick = { this.onPlay }
-                        src={ play ? "/img/pause.svg" : "/img/play.svg"} alt="play"/>
+                        src={ play ? "img/pause.svg" : "/img/play.svg"} alt="play"/>
                 <ControlBlock>
                     <ControlBlockButton 
                         onClick = { this.onLike }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom';
 import musicData from './music-data.json';
 
 import PlayList from './play-list.controller';
@@ -14,7 +14,7 @@ export default class App extends Component {
 
     return (
       <Wrapper>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Main>
             <Header>
               <Link to="/">Playlist</Link>
@@ -27,7 +27,7 @@ export default class App extends Component {
                      )} 
                     exact />
               <Route path='/radio' component = { Radio } />
-              <Route />
+              <Redirect to="/" />
             </Switch> 
           </Main>
         </Router>
