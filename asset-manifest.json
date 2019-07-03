@@ -1,0 +1,15 @@
+{
+  "main.css": "/music_player/static/css/main.9f6ac376.chunk.css",
+  "main.js": "/music_player/static/js/main.fa7a9c32.chunk.js",
+  "main.js.map": "/music_player/static/js/main.fa7a9c32.chunk.js.map",
+  "runtime~main.js": "/music_player/static/js/runtime~main.8f706da0.js",
+  "runtime~main.js.map": "/music_player/static/js/runtime~main.8f706da0.js.map",
+  "static/css/2.96635e4a.chunk.css": "/music_player/static/css/2.96635e4a.chunk.css",
+  "static/js/2.bf187aa2.chunk.js": "/music_player/static/js/2.bf187aa2.chunk.js",
+  "static/js/2.bf187aa2.chunk.js.map": "/music_player/static/js/2.bf187aa2.chunk.js.map",
+  "index.html": "/music_player/index.html",
+  "precache-manifest.7a6c77b4e17978277c0f5ce435239e12.js": "/music_player/precache-manifest.7a6c77b4e17978277c0f5ce435239e12.js",
+  "service-worker.js": "/music_player/service-worker.js",
+  "static/css/2.96635e4a.chunk.css.map": "/music_player/static/css/2.96635e4a.chunk.css.map",
+  "static/css/main.9f6ac376.chunk.css.map": "/music_player/static/css/main.9f6ac376.chunk.css.map"
+}
