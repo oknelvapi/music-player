@@ -154,13 +154,13 @@ export default class PlayList extends Component {
                 <ButtonsBlock>
                         <PlayButtons 
                             onClick = { this.onPlayPrev }
-                            src="img/prev-song.svg" alt="back"/>
+                            src="/img/prev-song.svg" alt="back"/>
                         <PlayButtons 
                             onClick = { this.onPlay }
-                            src={ play ? "img/pause.svg" : "img/play.svg"} alt="play"/>
+                            src={ play ? "/img/pause.svg" : "/img/play.svg"} alt="play"/>
                         <PlayButtons 
                             onClick = { this.onPlayNext }
-                            src="img/next-song.svg" alt="next"/> 
+                            src="/img/next-song.svg" alt="next"/> 
                 </ButtonsBlock>
                 
                 <TrackTitleBlock>
@@ -172,16 +172,16 @@ export default class PlayList extends Component {
                 <ControlBlock>
                         <ControlBlockButton 
                             onClick = { this.onVisible }
-                            src={ visible ? "img/player-list-actived.svg" : "img/player-list.svg" } alt="playlist-on"/>
+                            src={ visible ? "/img/player-list-actived.svg" : "/img/player-list.svg" } alt="playlist-on"/>
                         <ControlBlockButton 
                             onClick = { this.onMix }
-                            src={ mixed ? "img/player-mix-actived.svg" : "img/player-mix.svg"} alt="mixing"/>
+                            src={ mixed ? "/img/player-mix-actived.svg" : "/img/player-mix.svg"} alt="mixing"/>
                         <ControlBlockButton 
                             onClick = { this.onLike }
-                            src={ musicData[index].liked ? "img/track-liked.svg" : "img/track-not-liked.svg"} alt="like"/>
+                            src={ musicData[index].liked ? "/img/track-liked.svg" : "/img/track-not-liked.svg"} alt="like"/>
                         <ControlBlockButton 
                             onClick = { this.onMute}
-                            src={ muted ? "img/mute.svg" : "img/volume.svg" } alt="volume" />
+                            src={ muted ? "/img/mute.svg" : "/img/volume.svg" } alt="volume" />
                         <VolumeBlock>
                             <InputRange
                                 maxValue={100}
@@ -217,14 +217,14 @@ export default class PlayList extends Component {
                                          this.onTrackClick.bind(this, idx)();
                                          this.onChosen.bind(this, idx)();
                                      } }> */}
-                                    <Track.Field>{ this.state.index === idx ? <img src="img/play.svg" alt="play"/> : item.id }</Track.Field>  
+                                    <Track.Field>{ this.state.index === idx ? <img src="/img/play.svg" alt="play"/> : item.id }</Track.Field>  
                                     <Track.Field bold>{item.author}</Track.Field>
                                     <Track.Field> - </Track.Field>
                                     <Track.Field>{item.track}</Track.Field> 
                                     <Track.Control>
-                                        <Like src={ item.liked ? "img/track-liked.svg" : "img/track-not-liked.svg"} alt="like"/>
+                                        <Like src={ item.liked ? "/img/track-liked.svg" : "/img/track-not-liked.svg"} alt="like"/>
                                         <Track.Field>{Math.floor(item.duration/60)}-{item.duration % 60}</Track.Field>
-                                        <img src="img/track-actions.svg" alt="action"/>
+                                        <img src="/img/track-actions.svg" alt="action"/>
                                     </Track.Control>                           
                                 </Track.Wrapper>  
                         );
