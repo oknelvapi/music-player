@@ -19,7 +19,7 @@ export default class Radio extends Component {
     };
     
     onVolume = ( value ) => {
-        this.audio.volume = value * 0.01
+        this.audio.volume = value * 0.01;
         this.setState( {
             value: value
         });
@@ -62,14 +62,14 @@ export default class Radio extends Component {
             <RadioContainer>
                 <PlayButtons 
                         onClick = { this.onPlay }
-                        src={ play ? "img/pause.svg" : "/img/play.svg"} alt="play"/>
+                        src={ play ? "img/pause.svg" : "img/play.svg"} alt="play"/>
                 <ControlBlock>
                     <ControlBlockButton 
                         onClick = { this.onLike }
-                        src={ liked ? "/img/track-liked.svg" : "/img/track-not-liked.svg"} alt="like"/>
+                        src={ liked ? "img/track-liked.svg" : "img/track-not-liked.svg"} alt="like"/>
                     <ControlBlockButton 
                         onClick = { this.onMute}
-                        src={ muted ? "/img/mute.svg" : "/img/volume.svg" } alt="volume" />
+                        src={ muted ? "img/mute.svg" : "img/volume.svg" } alt="volume" />
                     <VolumeBlock>
                         <InputRange
                             maxValue={100}
